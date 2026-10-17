@@ -1,13 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>birr-scanner-web</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Birr Reader - Assistive Scanner</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <main id="app">
+    <header class="app-header">
+      <h1 id="status-title">Birr Scanner</h1>
+      <div id="state-indicator" class="badge" aria-hidden="true">BOOTING</div>
+    </header>
+
+    <section class="camera-viewport" aria-hidden="true">
+      <video id="webcam" playsinline muted autoplay></video>
+    </section>
+
+    <!-- Giant touch trigger designed for non-visual interaction -->
+    <button id="touch-trigger" class="trigger-zone" role="button" aria-label="Tap anywhere to scan note" disabled>
+      <span id="trigger-label">Initializing System...</span>
+    </button>
+
+    <!-- Live region for screen readers -->
+    <div id="accessible-announcements" class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true">
+    </div>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
